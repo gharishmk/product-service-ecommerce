@@ -1,0 +1,329 @@
+{
+    "info": {
+        "name": "Product Service",
+        "description": "Collection for the Product Service API endpoints",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Get All Products",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-service-token",
+                        "value": "{{service_token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/products?pageSize=10&pageNumber=1&keyword=phone&category=electronics&minPrice=100&maxPrice=1000",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "products"],
+                    "query": [
+                        {
+                            "key": "pageSize",
+                            "value": "10"
+                        },
+                        {
+                            "key": "pageNumber",
+                            "value": "1"
+                        },
+                        {
+                            "key": "keyword",
+                            "value": "phone"
+                        },
+                        {
+                            "key": "category",
+                            "value": "electronics"
+                        },
+                        {
+                            "key": "minPrice",
+                            "value": "100"
+                        },
+                        {
+                            "key": "maxPrice",
+                            "value": "1000"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get Product by ID",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-service-token",
+                        "value": "{{service_token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/products/:id",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "products", ":id"],
+                    "variable": [
+                        {
+                            "key": "id",
+                            "value": "product_id"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Create Product (Admin)",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-service-token",
+                        "value": "{{service_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"name\": \"New Product\",\n    \"description\": \"Product description\",\n    \"price\": 99.99,\n    \"stockQuantity\": 100,\n    \"categories\": [\"electronics\", \"gadgets\"]\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/products",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "products"]
+                }
+            }
+        },
+        {
+            "name": "Update Product (Admin)",
+            "request": {
+                "method": "PUT",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-service-token",
+                        "value": "{{service_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"name\": \"Updated Product\",\n    \"description\": \"Updated description\",\n    \"price\": 149.99,\n    \"stockQuantity\": 50,\n    \"categories\": [\"electronics\", \"gadgets\", \"new\"]\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/products/:id",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "products", ":id"],
+                    "variable": [
+                        {
+                            "key": "id",
+                            "value": "product_id"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Delete Product (Admin)",
+            "request": {
+                "method": "DELETE",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-service-token",
+                        "value": "{{service_token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/products/:id",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "products", ":id"],
+                    "variable": [
+                        {
+                            "key": "id",
+                            "value": "product_id"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Search Products",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-service-token",
+                        "value": "{{service_token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/products/search?term=phone&category=electronics&minPrice=100&maxPrice=1000&pageNumber=1",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "products", "search"],
+                    "query": [
+                        {
+                            "key": "term",
+                            "value": "phone"
+                        },
+                        {
+                            "key": "category",
+                            "value": "electronics"
+                        },
+                        {
+                            "key": "minPrice",
+                            "value": "100"
+                        },
+                        {
+                            "key": "maxPrice",
+                            "value": "1000"
+                        },
+                        {
+                            "key": "pageNumber",
+                            "value": "1"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Update Stock (Admin)",
+            "request": {
+                "method": "PUT",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-service-token",
+                        "value": "{{service_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"quantity\": 50\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/products/:id/stock",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "products", ":id", "stock"],
+                    "variable": [
+                        {
+                            "key": "id",
+                            "value": "product_id"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get Top Products",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-service-token",
+                        "value": "{{service_token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/products/top",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "products", "top"]
+                }
+            }
+        },
+        {
+            "name": "Get Product Stats (Admin)",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-service-token",
+                        "value": "{{service_token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/products/admin/stats",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "products", "admin", "stats"]
+                }
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:8082"
+        },
+        {
+            "key": "token",
+            "value": "your_jwt_token"
+        },
+        {
+            "key": "service_token",
+            "value": "your_service_token"
+        }
+    ]
+}
